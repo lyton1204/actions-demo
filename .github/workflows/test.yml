@@ -1,11 +1,14 @@
-on: push
+on:
+    push:
+        branches: ["main"]
+    workflow_dispatch:
+
 jobs:
     job1:
         runs-on: ubuntu-22.04
         steps:
-            - run: pwd
-            - run: ls
-    job2:
-        runs-on: windows-latest
-        steps:
-            - run: node --version
+            - name: テストname
+              run: pwd
+
+            - name: テストstep2
+              run: ls
