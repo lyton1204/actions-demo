@@ -1,0 +1,24 @@
+name: AWSとの接続のテスト
+on: [workflow_dispatch] # 手动触发测试
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  check-s3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git仓库をチェックアウト
+        uses: actions/checkout@v4
+
+      - name: AWS 认证 (使用 OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ap-northeast-1
+
+      - name: S3 桶列表查询测试
+        run: |
+          aws sts get-caller-identity
+          aws s3 ls
