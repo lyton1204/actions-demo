@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'python-sha256/**'
+      - '.github/workflows/python-sha256.yml'
 
 jobs:
   build_on_windows:
