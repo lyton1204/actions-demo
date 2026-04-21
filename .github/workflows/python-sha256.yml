@@ -19,6 +19,7 @@ jobs:
         run: pip install pyinstaller
       
       - name: build pyinstaller 
+        working-directory: python-sha256
         run: |
           pyinstaller sha256.py -F
 
@@ -26,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: windows-sha256.exe
-          path: dist/sha256.exe
+          path: python-sha256/dist/sha256.exe
 
   build_on_linux:
     runs-on: ubuntu-latest
@@ -41,6 +42,7 @@ jobs:
         run: pip install pyinstaller
       
       - name: build pyinstaller 
+        working-directory: python-sha256
         run: |
           pyinstaller sha256.py -F
 
@@ -48,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: liunux-sha256
-          path: dist/sha256.exe
+          path: python-sha256/dist/sha256.exe
 
   build_on_mac:
     runs-on: macos-latest
@@ -63,6 +65,7 @@ jobs:
         run: pip install pyinstaller
       
       - name: build pyinstaller 
+        working-directory: python-sha256
         run: |
           pyinstaller sha256.py -F
 
@@ -70,4 +73,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: macos-sha256
-          path: dist/sha256
+          path: python-sha256/dist/sha256
