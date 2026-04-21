@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: liunux-sha256
-          path: python-sha256/dist/sha256.exe
+          path: python-sha256/dist/sha256
 
   build_on_mac:
     runs-on: macos-latest
