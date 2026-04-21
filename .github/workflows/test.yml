@@ -1,5 +1,11 @@
 on:
-    workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'python-demo/**'
+      - '.github/workflows/test.yml'
+  workflow_dispatch:
 
 jobs:
     job1:

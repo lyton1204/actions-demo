@@ -1,0 +1,73 @@
+name: python-sha256 training with upload-artifacts
+on:
+  workflow_dispatch: 
+  push:
+    paths:
+      - 'python-sha256/**'
+
+jobs:
+  build_on_windows:
+    runs-on: windows-latest
+    steps:
+      - name: build on windows
+        run: echo Hellow Windows 
+
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: install pyinstaller
+        run: pip install pyinstaller
+      
+      - name: build pyinstaller 
+        run: |
+          pyinstaller sha256.py -F
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: windows-sha256.exe
+          path: dist/sha256.exe
+
+  build_on_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build on windows
+        run: echo Hellow Windows 
+
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: install pyinstaller
+        run: pip install pyinstaller
+      
+      - name: build pyinstaller 
+        run: |
+          pyinstaller sha256.py -F
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: liunux-sha256
+          path: dist/sha256.exe
+
+  build_on_mac:
+    runs-on: macos-latest
+    steps:
+      - name: build on windows
+        run: echo Hellow Windows 
+
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: install pyinstaller
+        run: pip install pyinstaller
+      
+      - name: build pyinstaller 
+        run: |
+          pyinstaller sha256.py -F
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: macos-sha256
+          path: dist/sha256

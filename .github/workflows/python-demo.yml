@@ -1,5 +1,11 @@
 name: python test actions demo
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - 'python-demo/**'
+      - '.github/workflows/python-demo.yml'
+
 jobs:
     build_and_test:
         runs-on: ubuntu-latest
