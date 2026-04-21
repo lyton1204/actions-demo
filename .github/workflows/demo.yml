@@ -1,0 +1,24 @@
+name: python test actions demo
+on: workflow_dispatch
+jobs:
+    build_and-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: pre - checkout
+              run: | 
+                 echo Hello World
+                 pwd
+                 ls -lH
+                 echo ${{ github.repositoryUrl }}
+
+            - name: checkout 
+              uses: actions/checkout@v6
+
+            - name:  after checkout
+              run: | 
+                ls -lH
+                date
+            
+            - name: run test 
+              run: |
+                pytest
